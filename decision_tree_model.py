@@ -27,5 +27,4 @@ train_result = decision_tree()
 
 
 print(train_result)
-print(train_result)
 
