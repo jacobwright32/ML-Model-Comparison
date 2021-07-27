@@ -33,36 +33,22 @@ def decision_tree():
 
     return results
 
-#clf = tree.DecisionTreeRegressor()
-
-    # # Train the model
-    # clf = clf.fit(X_train, y_train)
-    
-    # # Validate the model
-    # result = {
-    #     'train_score': clf.score(X_train, y_train),
-    #     'val_score': clf.score(X_val, y_val),
-    #     'test_score': clf.score(X_test, y_test),
-    # }
-
-    # return result
-
 
 def generate_params():
     
     params = {
         'criterion' : ['mse', 'friedman_mse', 'mae', 'poisson'],
         'splitter': ['best', 'random'],
-        'max_depth': [1, 2, 3, 4, 5, None],
-        'min_samples_split': [2, 3, 4, 5, 0.5, 1.5, 2.5, 3.5],
-        'min_samples_leaf': [1, 2, 3, 4, 5, 0.5, 1.5, 2.5, 3.5, 4.5],
-        'min_weight_fraction_leaf': [0.0, 0.1, 0.2, 0.3],
+        'max_depth': [1, 2, None],
+#        'min_samples_split': [2, 0.2, 0.4],
+#        'min_samples_leaf': [1, 0.1, 0.2],
+#        'min_weight_fraction_leaf': [0.0, 0.1, 0.3],
         'max_features': ['auto', 'sqrt', 'log2', None],
-        'random_state': [1, 2, 3, 4, 5, None],
-        'max_leaf_nodes': [1, 2, 3, 4, 5, None],
-        'min_impurity_decrease': [0.0, 0.1, 0.2, 0.3, 0.4],
-        'min_impurity_split': [0, 0.1, 0.2, 0.3, 0.4, None],
-        'ccp_alpha': [0.0, 0.1, 0.2, 0.3, 0.4]
+#        'random_state': [1, 2, 3, None],
+        'max_leaf_nodes': [2, 3, 4, None],
+#        'min_impurity_decrease': [0.0, 0.1, 0.4],
+#        'min_impurity_split': [0, 0.2, 0.4, None],
+#        'ccp_alpha': [0.0, 0.1]
     }
 
     keys = list(params.keys())
