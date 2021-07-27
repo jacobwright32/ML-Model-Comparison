@@ -10,10 +10,11 @@ def train_SVR():
     X_train, X_val, X_test, y_train, y_val, y_test = split_data()
 
     # Call the SVC
-    params = generate_params()
-    reg = SVR()
+    #params = generate_params()
 
-    # Train the model
+
+    # Train the model with grid search
+    reg = SVR()
     reg.fit(X_train, y_train)
 
     # Validate the model
@@ -27,22 +28,27 @@ def train_SVR():
     
 
 def generate_params():
-    
-    kernels = ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
-    kernel_idx = np.random.randint(0, len(kernels))
-    
     params = {
-        'kernel' : kernels[kernel_idx],
-        'gamma': range(0.001, 1000),
-        'C': 10,
+        'kernel' : ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
+        'gamma': [0.001, 0.01, 0.1, 1, 10, 100, 1000],
+        'C': [0.1, 1, 10],
     }
+    
+    
+    
+
 
     return params
 
 
-def generat_params_svr():
+def generate_params_svr():
     result = train_SVR()
     print(result)
+
+
+
+print(generate_params_svr())
+print(generate_params_svr())
 
 
 

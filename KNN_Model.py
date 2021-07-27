@@ -4,7 +4,7 @@ from sklearn import neighbors
 from sklearn.neighbors import KNeighborsRegressor
 
 X_train, X_val, X_test, y_train, y_val, y_test = split_data()
-k = 4
+k = 2
 
 def KNN_Model(X, X_val, y, y_val):
     
@@ -16,4 +16,4 @@ def KNN_Model(X, X_val, y, y_val):
 KNN_Model(X_train, X_val, y_train, y_val)
 
 
-# %%
+
