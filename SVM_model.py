@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 from sklearn.svm import SVR
 from get_data import split_data
 
@@ -9,7 +11,7 @@ def train_SVR():
 
     # Call the SVC
     params = generate_params()
-    reg = SVR(**params)
+    reg = SVR()
 
     # Train the model
     reg.fit(X_train, y_train)
@@ -26,16 +28,21 @@ def train_SVR():
 
 def generate_params():
     
+    kernels = ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed']
+    kernel_idx = np.random.randint(0, len(kernels))
+    
     params = {
-        #'kernel' : ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
-        'kernel': 'rbf',
-        'gamma': 0.01,
+        'kernel' : kernels[kernel_idx],
+        'gamma': range(0.001, 1000),
         'C': 10,
     }
 
     return params
 
 
-result = train_SVR()
-print(result)
+def generat_params_svr():
+    result = train_SVR()
+    print(result)
+
+
 
