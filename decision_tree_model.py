@@ -1,4 +1,4 @@
-#%%
+
 from sklearn import tree
 from get_data import split_data
 
@@ -33,5 +33,3 @@ train_result = decision_tree()
 
 print(train_result)
 
-
-# %%
