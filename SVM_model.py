@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+import itertools
 from sklearn.svm import SVR
 from get_data import split_data
 
@@ -8,34 +11,45 @@ def train_SVR():
     X_train, X_val, X_test, y_train, y_val, y_test = split_data()
 
     # Call the SVC
-    params = generate_params()
-    reg = SVR(**params)
+    keys, values, grid_params = generate_params()
+    results = []
 
-    # Train the model
-    reg.fit(X_train, y_train)
+    for r in grid_params:
+        
+        param = {keys[idx]:r[idx] for idx in range(len(r))}
+        print(param)
+        reg = SVR(**param)
+        reg.fit(X_train, y_train)
+        
+        # Train the model with grid search
+        result = {
+            'params': param,
+            'train_score': reg.score(X_train, y_train),
+            'val_score': reg.score(X_val, y_val),
+            'test_score': reg.score(X_test, y_test),
+        }
 
-    # Validate the model
-    result = {
-        'train_score': reg.score(X_train, y_train),
-        'val_score': reg.score(X_val, y_val),
-        'test_score': reg.score(X_test, y_test),
-    }
+        results.append(result)
 
-    return result
+    return results
     
 
 def generate_params():
     
     params = {
-        #'kernel' : ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
-        'kernel': 'rbf',
-        'gamma': 0.01,
-        'C': 10,
+        'kernel' : ['linear', 'rbf'],
+        'gamma': [0.1, 1],
+        'C': [0.1, 1],
     }
 
-    return params
+    keys = list(params.keys())
+    values = params.values()
+    grid_params = list(itertools.product(*values))
 
+    return keys, values, grid_params
+    
 
-result = train_SVR()
-print(result)
+results = train_SVR()
+df = pd.DataFrame(results)
 
+# %%
