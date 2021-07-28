@@ -3,6 +3,7 @@ from numpy.lib.npyio import savez_compressed
 from get_data import split_data
 from sklearn import neighbors
 from sklearn.neighbors import KNeighborsRegressor
+import pandas as pd
 
 X_train, X_val, X_test, y_train, y_val, y_test = split_data()
 
@@ -24,14 +25,17 @@ def KNN_Model(X_train, X_val, X_test, y_train, y_val, y_test, algo, k, leaf):
 
 def hyper_para():
     scores = []
+    
     for algo in ['auto', 'ball_tree', 'kd_tree', 'brute']:
 
         for k in range(10,100,10):
             
             for leaf in range(1,30):
                 scores.append(KNN_Model(X_train, X_val, X_test, y_train, y_val, y_test, algo, k, leaf))
-        
-    return scores
+    
+    scores_df = pd.DataFrame(scores)
+    
+    return scores_df
 
 knn_scores = hyper_para()
 print(knn_scores)
