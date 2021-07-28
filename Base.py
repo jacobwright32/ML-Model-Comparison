@@ -1,14 +1,16 @@
+import pandas as pd
 import itertools
 from get_data import split_data
 
 
 class Base:
+
+
     def __init__(self, model):
         self.X_train, self.X_val, self.X_test, self.y_train, self.y_val, self.y_test = split_data()
         self.model = model
         self.params = {}
         
-
 
     def generate_params(self, params):
         
@@ -40,6 +42,15 @@ class Base:
                 results.append(result)
 
         return results
+
+
+    def best_model(self):
+        
+        results = self.fit()
+        results_df = pd.DataFrame(results)
+        best_result = results_df[results_df['val_score'] == results_df['val_score'].max()]['params']
+        
+        return self.model(**best_result.to_dict)
 
 
         
