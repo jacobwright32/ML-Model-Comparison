@@ -45,7 +45,7 @@ class Base:
 
 
     def best_model(self):
-        
+        #
         results = self.fit()
         results_df = pd.DataFrame(results)
         best_result = results_df[results_df['val_score'] == results_df['val_score'].max()]['params']
