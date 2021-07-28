@@ -3,11 +3,11 @@ from get_data import split_data
 
 
 class Base:
-    def __init__(self, model, params):
+    def __init__(self, model):
         self.X_train, self.X_val, self.X_test, self.y_train, self.y_val, self.y_test = split_data()
         self.model = model
-        self.params = params
-        print(params)
+        self.params = {}
+        
 
 
     def generate_params(self, params):
@@ -26,7 +26,6 @@ class Base:
         for r in grid_params:
                 
                 param = {keys[idx]:r[idx] for idx in range(len(r))}
-                print(param)
                 reg = self.model(**param)
                 reg.fit(self.X_train, self.y_train)
                 
