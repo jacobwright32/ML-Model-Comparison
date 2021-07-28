@@ -9,3 +9,5 @@ best_knn = KNN_model().best_model()
 best_decision_tree = Decision_tree().best_model()
 best_svr = SVR_model().best_model()
 
+
+# %%
