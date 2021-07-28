@@ -45,12 +45,13 @@ class Base:
 
 
     def best_model(self):
-        #
+        
         results = self.fit()
         results_df = pd.DataFrame(results)
-        best_result = results_df[results_df['val_score'] == results_df['val_score'].max()]['params']
-        
-        return self.model(**best_result.to_dict)
+        best_result = results_df[results_df['val_score'] == results_df['val_score'].max()].iloc[0].params
+        return self.model(**best_result)
+
+
 
 
         
