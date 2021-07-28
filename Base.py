@@ -3,9 +3,11 @@ from get_data import split_data
 
 
 class Base:
-    def __init__(self, model):
+    def __init__(self, model, params):
         self.X_train, self.X_val, self.X_test, self.y_train, self.y_val, self.y_test = split_data()
         self.model = model
+        self.params = params
+        print(params)
 
 
     def generate_params(self, params):
@@ -18,7 +20,7 @@ class Base:
 
 
     def fit(self):
-        keys, values, grid_params = self.generate_params()
+        keys, values, grid_params = self.generate_params(self.params)
         results = []
         
         for r in grid_params:
