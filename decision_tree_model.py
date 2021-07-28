@@ -3,8 +3,8 @@ from Base import Base
 
 
 class Decision_tree(Base):
-    def __init__(self, params):
-        super().__init__(tree, params)
+    def __init__(self):
+        super().__init__(tree)
     
         self.params = {
                 'criterion' : ['mse', 'friedman_mse', 'mae', 'poisson'],
