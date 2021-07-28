@@ -5,7 +5,7 @@ from decision_tree_model import Decision_tree
 from get_data import split_data
 
 
-best_knn = KNN_model().best_model()
-best_decision_tree = Decision_tree().best_model()
-best_svr = SVR_model().best_model()
+best_knn, best_knn_time = KNN_model().best_model()
+best_dt, best_dt_time = Decision_tree().best_model()
+best_svr, best_svr_time = SVR_model().best_model()
 
