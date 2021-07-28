@@ -1,4 +1,6 @@
+#%%
 import pandas as pd
+import timeit
 import itertools
 from get_data import split_data
 
@@ -26,13 +28,14 @@ class Base:
         results = []
         
         for r in grid_params:
-                
                 param = {keys[idx]:r[idx] for idx in range(len(r))}
                 reg = self.model(**param)
+                start = timeit.timeit()
                 reg.fit(self.X_train, self.y_train)
-                
+                end = timeit.timeit()
                 # Train the model with grid search
                 result = {
+                    'time_taken' : (end-start),
                     'params': param,
                     'train_score': reg.score(self.X_train, self.y_train),
                     'val_score': reg.score(self.X_val, self.y_val),
@@ -55,3 +58,5 @@ class Base:
 
 
         
+
+# %%
