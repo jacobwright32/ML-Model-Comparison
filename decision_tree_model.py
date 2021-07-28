@@ -1,4 +1,3 @@
-#%%
 from sklearn import tree
 from Base import Base
 
@@ -21,5 +20,3 @@ class Decision_tree(Base):
         #        'min_impurity_split': [0, 0.2, 0.4, None],
         #        'ccp_alpha': [0.0, 0.1]
         }
-    
-# %%
