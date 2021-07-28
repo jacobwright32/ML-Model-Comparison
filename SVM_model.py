@@ -12,6 +12,3 @@ class SVR_model(Base):
             'C': [0.1, 1],
         }
 
-
-
-
