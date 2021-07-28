@@ -13,12 +13,12 @@ best_svr, best_svr_time = SVR_model().best_model()
 
 
 X_train, X_val, X_test, y_train, y_val, y_test = split_data()
-best_knn().fit(X_train, y_train)
-best_dt().fit(X_train, y_train)
-best_svr().fit(X_train, y_train)
+best_knn.fit(X_train, y_train)
+best_dt.fit(X_train, y_train)
+best_svr.fit(X_train, y_train)
 
-knn_score = best_knn().score(X_val, y_val)
-dt_score = best_dt().score(X_val, y_val)
-svr_score = best_svr().score(X_val, y_val)
+knn_score = best_knn.score(X_val, y_val)
+dt_score = best_dt.score(X_val, y_val)
+svr_score = best_svr.score(X_val, y_val)
 
 print(knn_score, dt_score, svr_score)
