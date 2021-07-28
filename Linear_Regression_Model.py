@@ -1,16 +1,14 @@
 #%%
 from sklearn.svm import SVR
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
 from Base import Base
-x = LinearRegression()
+
 
 class Linear_model(Base):
 
     def __init__(self):
-        super().__init__(LinearRegression)
+        super().__init__(Ridge)
         self.params = {
-        'normalize' : 'True',
-        'fit_intercept' : [True],
-        'n_jobs': -1,
-        'positive': [True, False]
-    }
+        'sample_weight' : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+# %%
