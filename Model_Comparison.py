@@ -10,4 +10,3 @@ Decision_Tree_scores = decision_tree()
 print(SVR_scores)
 print(knn_scores)
 # %%
-q1
