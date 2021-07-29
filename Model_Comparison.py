@@ -22,3 +22,4 @@ dt_score = best_dt.score(X_val, y_val)
 svr_score = best_svr.score(X_val, y_val)
 
 print(knn_score, dt_score, svr_score)
+print(best_knn_time, best_dt_time, best_svr_time)

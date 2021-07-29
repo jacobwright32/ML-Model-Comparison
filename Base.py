@@ -46,6 +46,7 @@ class Base:
         return results
 
 
+
     def best_model(self):
         
         results = self.fit()
