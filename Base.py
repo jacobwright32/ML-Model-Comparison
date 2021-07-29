@@ -46,18 +46,16 @@ class Base:
         return results
 
 
+
     def best_model(self):
         
         results = self.fit()
         results_df = pd.DataFrame(results)
         best_result = results_df[results_df['val_score'] == results_df['val_score'].max()].iloc[0]
-        best_params = best_result.param
+        best_params = best_result.params
         best_time = best_result.time_taken
         
         return self.model(**best_params), best_time
-
-
-
 
         
 

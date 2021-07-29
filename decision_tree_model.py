@@ -4,10 +4,10 @@ from Base import Base
 
 class Decision_tree(Base):
     def __init__(self):
-        super().__init__(tree)
+        super().__init__(tree.DecisionTreeRegressor)
     
         self.params = {
-                'criterion' : ['mse', 'friedman_mse', 'mae', 'poisson'],
+                'criterion' : ['mse', 'friedman_mse', 'mae'],
                 'splitter': ['best', 'random'],
         #        'max_depth': [1, 2, None],
         #        'min_samples_split': [2, 0.2, 0.4],
